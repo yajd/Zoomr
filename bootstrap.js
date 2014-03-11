@@ -149,7 +149,11 @@ function keyDowned(e) {
 			.rootTreeItem
 			.QueryInterface(Ci.nsIInterfaceRequestor)
 			.getInterface(Ci.nsIDOMWindow);
-		DOMWindow.gBrowser.addEventListener('mouseover', outlineHelper, true);
+		if (DOMWindow.gBrowser) {
+			DOMWindow.gBrowser.addEventListener('mouseover', outlineHelper, true);
+		} else {
+			DOMWindow.gBrowser.addEventListener('mouseover', outlineHelper, true);
+		}
 
 		//use ctypes to get coords and then elem from point and then outlineHelper that
 	}
@@ -172,7 +176,11 @@ function keyUpped(e) {
 			.rootTreeItem
 			.QueryInterface(Ci.nsIInterfaceRequestor)
 			.getInterface(Ci.nsIDOMWindow);
-		DOMWindow.gBrowser.removeEventListener('mouseover', outlineHelper, true);
+		if (DOMWindow.gBrowser) {
+			DOMWindow.gBrowser.removeEventListener('mouseover', outlineHelper, true);
+		} else {
+			DOMWindow.gBrowser.removeEventListener('mouseover', outlineHelper, true);
+		}
 		added = false;
 
 		var win = e.originalTarget.ownerDocument.defaultView.top;
